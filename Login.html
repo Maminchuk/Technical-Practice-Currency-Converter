@@ -139,32 +139,23 @@
 </head>
 <body>
     <main class="auth-container">
-        <section class="registration-section">
-            <h2>Registration</h2>
-            <form id="registration-form">
+        <section class="login-section">
+            <h2>Login</h2>
+            <form id="login-form">
                 <div class="form-group">
-                    <label for="reg-username">Username:</label>
-                    <input type="text" id="reg-username" name="username" required>
+                    <label for="login-username">Username or Email:</label>
+                    <input type="text" id="login-username" name="username" required>
                 </div>
                 <div class="form-group">
-                    <label for="reg-email">Email:</label>
-                    <input type="email" id="reg-email" name="email" required>
+                    <label for="login-password">Password:</label>
+                    <input type="password" id="login-password" name="password" required>
                 </div>
-                <div class="form-group">
-                    <label for="reg-password">Password:</label>
-                    <input type="password" id="reg-password" name="password" required>
-                </div>
-                <div class="form-group">
-                    <label for="reg-confirm-password">Confirm Password:</label>
-                    <input type="password" id="reg-confirm-password" name="confirm-password" required>
-                </div>
-                <button type="submit">Register</button>
+                <button type="submit">Log in</button>
                 <div class="toggle-link">
-                    Already have an account? <a href="#" id="go-to-login">Log in</a>
+                    Don't have an account? <a href="#" id="go-to-register">Register</a>
                 </div>
             </form>
-            <div id="registration-error" class="error-message"></div>
-            <div id="registration-success" class="success-message"></div>
+            <div id="login-error" class="error-message"></div>
         </section>
     </main>
     <script>
