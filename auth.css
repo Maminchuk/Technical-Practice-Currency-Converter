@@ -9,7 +9,6 @@
     min-height: 60vh;
     background-color: #f4f4f4;
 }
-
 .registration-section, .login-section {
     margin: 20px;
     padding: 30px;
@@ -19,24 +18,20 @@
     background-color: white;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-
 .registration-section h2, .login-section h2 {
     text-align: center;
     margin-bottom: 25px;
     color: #333;
 }
-
 .form-group {
     margin-bottom: 20px;
 }
-
 .form-group label {
     display: block;
     margin-bottom: 8px;
     font-weight: bold;
     color: #555;
 }
-
 .form-group input[type="text"],
 .form-group input[type="email"],
 .form-group input[type="password"] {
@@ -47,7 +42,6 @@
     box-sizing: border-box;
     font-size: 16px;
 }
-
 .registration-section button[type="submit"],
 .login-section button[type="submit"] {
     width: 100%;
@@ -60,39 +54,32 @@
     font-size: 18px;
     transition: background-color 0.3s ease;
 }
-
 .registration-section button[type="submit"]:hover,
 .login-section button[type="submit"]:hover {
     background-color: #0056b3;
 }
-
 .error-message {
     color: #dc3545;
     margin-top: 10px;
     font-size: 14px;
 }
-
 .success-message {
     color: #28a745;
     margin-top: 10px;
     font-size: 14px;
 }
-
 .registration-section p, .login-section p {
     text-align: center;
     margin-top: 15px;
     color: #777;
 }
-
 .registration-section a, .login-section a {
     color: #007bff;
     text-decoration: none;
 }
-
 .registration-section a:hover, .login-section a:hover {
     text-decoration: underline;
 }
-/* Add to auth.css */
 @media (max-width: 768px) {
     .auth-container {
         flex-direction: column;

@@ -344,7 +344,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }));
     }
 
-    // Initialize currency change listeners
     ['from-currency', 'to-currency', 'base-currency', 'target-currency'].forEach(id => {
         const select = document.getElementById(id);
         if (select) {
@@ -352,7 +351,5 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    
-    // Start the app
     init();
 });

@@ -320,16 +320,12 @@ section h2{
 .history-item:last-child {
     border-bottom: none;
 }
-
-
-
 .site-footer {
     background-color: #2d3748;
     color: #f7fafc;
     padding: 60px 0 0;
     font-family: "Work Sans", sans-serif;
 }
-
 .footer-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -338,41 +334,34 @@ section h2{
     grid-template-columns: 1fr 2fr;
     gap: 40px;
 }
-
 .footer-brand {
     display: flex;
     flex-direction: column;
 }
-
 .footer-logo {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
 }
-
 .footer-logo-image {
     width: 50px;
     height: 50px;
     border-radius: 50%;
     margin-right: 15px;
 }
-
 .footer-title {
     font-size: 1.5rem;
     font-weight: 600;
 }
-
 .footer-tagline {
     margin-bottom: 25px;
     line-height: 1.6;
     color: #a0aec0;
 }
-
 .footer-social {
     display: flex;
     gap: 15px;
 }
-
 .social-link {
     color: #cbd5e0;
     transition: color 0.3s ease;
@@ -384,22 +373,18 @@ section h2{
     border-radius: 50%;
     background-color: rgba(255, 255, 255, 0.1);
 }
-
 .social-link:hover {
     color: #fff;
     background-color: #4271dc;
 }
-
 .footer-links {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
 }
-
 .footer-column {
     margin-bottom: 30px;
 }
-
 .footer-heading {
     font-size: 1.125rem;
     font-weight: 600;
@@ -407,7 +392,6 @@ section h2{
     position: relative;
     padding-bottom: 10px;
 }
-
 .footer-heading::after {
     content: '';
     position: absolute;
@@ -417,11 +401,9 @@ section h2{
     height: 2px;
     background-color: #4271dc;
 }
-
 .footer-list {
     list-style: none;
 }
-
 .footer-link {
     color: #cbd5e0;
     text-decoration: none;
@@ -429,18 +411,15 @@ section h2{
     padding: 8px 0;
     transition: color 0.3s ease, transform 0.3s ease;
 }
-
 .footer-link:hover {
     color: #fff;
     transform: translateX(5px);
 }
-
 .footer-bottom {
     background-color: #1a202c;
     padding: 20px 0;
     margin-top: 60px;
 }
-
 .footer-disclaimer,
 .footer-copyright {
     text-align: center;
@@ -468,12 +447,10 @@ section h2{
 .result {
     text-align: center;
 }
-
 .conversion-result span {
     display: block; 
     margin-bottom: 5px; 
 }
-
 .conversion-result .rate {
     font-size: 0.9em; 
     color: #777; 
@@ -520,7 +497,6 @@ section h2{
     color: #4a5568;
     transition: color 0.3s ease;
 }
-/* Add to style.css */
 @media (max-width: 768px) {
     header {
         flex-direction: column;
@@ -529,34 +505,27 @@ section h2{
         margin-top: 10px;
         margin-bottom: 10px;
     }
-    
     .logo-container {
         margin-bottom: 10px;
     }
-    
     .header-actions {
         flex-direction: column;
         width: 100%;
     }
-    
     .header-actions nav ul {
         flex-direction: column;
         width: 100%;
     }
-    
     .header-actions nav ul li {
         margin: 5px 0;
         width: 100%;
     }
-    
     .header-actions nav ul li a {
         text-align: center;
     }
-    
     .separator {
         display: none;
     }
-    
     .header-button {
         width: 100%;
         margin: 5px 0;
@@ -568,11 +537,9 @@ section h2{
         min-height: 400px;
         padding: 20px;
     }
-    
     .promo-text {
         font-size: 1.8em;
     }
-    
     .go-to-converter {
         padding: 12px 24px;
         font-size: 1em;
@@ -582,23 +549,19 @@ section h2{
     .converter-form {
         flex-direction: column;
     }
-    
     .converter-form input,
     .converter-form select,
     #convert-btn {
         width: 100%;
         margin-bottom: 10px;
     }
-    
     .swap-btn {
         margin: 10px 0;
         transform: rotate(90deg);
     }
-    
     .swap-btn:hover {
         transform: rotate(270deg);
     }
-    
     .currency-select {
         width: 100%;
         margin-right: 0;
@@ -608,15 +571,12 @@ section h2{
     .chart-controls {
         flex-direction: column;
     }
-    
     .chart-controls select {
         width: 100%;
     }
-    
     #currency-chart {
         height: 300px;
     }
-    
     .history-list {
         max-height: 300px;
     }
@@ -630,16 +590,13 @@ section h2{
     .footer-container {
         grid-template-columns: 1fr;
     }
-    
     .footer-links {
         grid-template-columns: 1fr;
     }
-    
     .footer-brand {
         text-align: center;
         align-items: center;
     }
-    
     .footer-social {
         justify-content: center;
     }

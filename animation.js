@@ -1,14 +1,11 @@
 
 document.addEventListener('DOMContentLoaded', function() {
-
     const startSection = document.querySelector('.start-section');
     const container = document.querySelector('.container');
     const goToConverterBtn = document.querySelector('.go-to-converter');
-    
     setTimeout(() => {
         startSection.classList.add('active');
     }, 300);
-    
     if (goToConverterBtn) {
         goToConverterBtn.addEventListener('click', function(e) {
             e.preventDefault();
@@ -20,7 +17,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
-    
  window.addEventListener('scroll', function() {
     const scrollPosition = window.scrollY;
     const container = document.querySelector('.container');
