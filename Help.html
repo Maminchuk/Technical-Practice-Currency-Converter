@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Help | Currency Converter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      padding: 40px;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    h1, h2 {
+      color: #2c3e50;
+    }
+    section {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .faq {
+      margin-top: 30px;
+    }
+    .faq h3 {
+      margin-top: 20px;
+      color: #34495e;
+    }
+    .faq p {
+      margin-bottom: 15px;
+    }
+    .contact-link {
+      color: #3498db;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+    #contact-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+    .contact-form {
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 500px;
+    }
+    .contact-form h2 {
+      margin-top: 0;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+    .form-group textarea {
+      height: 150px;
+      resize: vertical;
+    }
+    .form-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+    .btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .btn-primary {
+      background-color: #3498db;
+      color: white;
+    }
+    .btn-secondary {
+      background-color: #e0e0e0;
+      color: #333;
+    }
+    @media (max-width: 768px) {
+    body {
+        padding: 20px;
+    }
+    
+    section {
+        padding: 20px;
+    }
+    
+    .contact-form {
+        width: 95%;
+    }
+}
+  </style>
+</head>
+<body>
+  <section>
+    <h1>Help & Support</h1>
+    <p>Need assistance? We're here to help! This guide covers the most frequently asked questions and how to get the most out of our Currency Converter.</p>
+
+    <div class="faq">
+      <h2>Frequently Asked Questions</h2>
+
+      <h3>🔁 How do I convert currencies?</h3>
+      <p>Simply enter the amount you want to convert, select the source and target currencies, then click "Convert." Your result will appear instantly.</p>
+
+      <h3>📉 What is the "Exchange Rate Dynamics" chart?</h3>
+      <p>This interactive chart lets you compare currency exchange trends over 7, 30, or 90 days using real-time data.</p>
+
+      <h3>📜 Where can I view my previous conversions?</h3>
+      <p>All your conversions are saved in the "History of Conversions" section. You can find it by scrolling down below the converter.</p>
+
+      <h3>🌍 Can I use this site on mobile devices?</h3>
+      <p>Yes! The Currency Converter is fully responsive and works seamlessly on smartphones, tablets, and desktops.</p>
+
+      <h3>🛠 What if I encounter a bug or error?</h3>
+      <p>If something isn't working as expected, please refresh the page. If the issue persists, <span class="contact-link">contact our support team</span>.</p>
+
+      <h3>💬 How can I get further help?</h3>
+      <p>You can reach out to us via email at support@currencyconverter.com or use the <span class="contact-link">contact form</span>. We'll get back to you as soon as possible.</p>
+    </div>
+  </section>
+
+  <!-- Contact Modal -->
+  <div id="contact-modal">
+    <div class="contact-form">
+      <h2>Contact Developer</h2>
+      <form id="message-form">
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Your Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" name="subject" required>
+        </div>
+        <div class="form-group">
+          <label for="message">Your Message</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        <div class="form-actions">
+          <button type="button" class="btn btn-secondary" id="cancel-btn">Cancel</button>
+          <button type="submit" class="btn btn-primary">Send Message</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Show contact form when contact links are clicked
+    const contactLinks = document.querySelectorAll('.contact-link');
+    const contactModal = document.getElementById('contact-modal');
+    const cancelBtn = document.getElementById('cancel-btn');
+    const messageForm = document.getElementById('message-form');
+
+    contactLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        contactModal.style.display = 'flex';
+      });
+    });
+
+    // Hide contact form when cancel button is clicked
+    cancelBtn.addEventListener('click', () => {
+      contactModal.style.display = 'none';
+    });
+
+    // Hide contact form when clicking outside the form
+    contactModal.addEventListener('click', (e) => {
+      if (e.target === contactModal) {
+        contactModal.style.display = 'none';
+      }
+    });
+
+    // Handle form submission
+    messageForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      // Here you would typically send the form data to your server
+      // For this example, we'll just show an alert and close the form
+      const formData = new FormData(messageForm);
+      const messageData = Object.fromEntries(formData.entries());
+      
+      console.log('Message to developer:', messageData);
+      alert('Thank you for your message! We will get back to you soon.');
+      
+      // Reset form and close modal
+      messageForm.reset();
+      contactModal.style.display = 'none';
+    });
+  </script>
+</body>
+</html>

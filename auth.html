@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Registration</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Raleway', 'Work Sans', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .auth-container {
+            display: flex;
+            width: 900px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .form-section {
+            padding: 50px;
+            width: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .login-section {
+            background-color: #ffffff;
+        }
+        
+        .registration-section {
+            background-color: #f9f9f9;
+        }
+        
+        h2 {
+            margin-bottom: 30px;
+            color: #2c3e50;
+            font-size: 28px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 500;
+        }
+        
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border 0.3s;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+        
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #2980b9;
+        }
+        
+        .toggle-link {
+            text-align: center;
+            margin-top: 20px;
+            color: #555;
+        }
+        
+        .toggle-link a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .toggle-link a:hover {
+            text-decoration: underline;
+        }
+        
+        .error-message {
+            color: #e74c3c;
+            margin-top: 15px;
+            text-align: center;
+            display: none;
+        }
+        
+        .success-message {
+            color: #2ecc71;
+            margin-top: 15px;
+            text-align: center;
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .auth-container {
+                flex-direction: column;
+                width: 90%;
+            }
+            
+            .form-section {
+                width: 100%;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="auth.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main class="auth-container">
+        <section class="login-section">
+            <h2>Login</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="login-username">Username or Email:</label>
+                    <input type="text" id="login-username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password:</label>
+                    <input type="password" id="login-password" name="password" required>
+                </div>
+                <button type="submit">Log in</button>
+                <div class="toggle-link">
+                    Don't have an account? <a href="#" id="go-to-register">Register</a>
+                </div>
+            </form>
+            <div id="login-error" class="error-message"></div>
+        </section>
+        <section class="registration-section">
+            <h2>Registration</h2>
+            <form id="registration-form">
+                <div class="form-group">
+                    <label for="reg-username">Username:</label>
+                    <input type="text" id="reg-username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="reg-email">Email:</label>
+                    <input type="email" id="reg-email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="reg-password">Password:</label>
+                    <input type="password" id="reg-password" name="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="reg-confirm-password">Confirm Password:</label>
+                    <input type="password" id="reg-confirm-password" name="confirm-password" required>
+                </div>
+                <button type="submit">Register</button>
+                <div class="toggle-link">
+                    Already have an account? <a href="#" id="go-to-login">Log in</a>
+                </div>
+            </form>
+            <div id="registration-error" class="error-message"></div>
+            <div id="registration-success" class="success-message"></div>
+        </section>
+    </main>
+    <script>
+        document.getElementById('go-to-register').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector('.login-section').style.display = 'none';
+            document.querySelector('.registration-section').style.display = 'block';
+        });
+
+        document.getElementById('go-to-login').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector('.registration-section').style.display = 'none';
+            document.querySelector('.login-section').style.display = 'block';
+        });
+        document.getElementById('registration-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const password = document.getElementById('reg-password').value;
+            const confirmPassword = document.getElementById('reg-confirm-password').value;
+            
+            if (password !== confirmPassword) {
+                document.getElementById('registration-error').textContent = "Passwords don't match!";
+                document.getElementById('registration-error').style.display = 'block';
+                document.getElementById('registration-success').style.display = 'none';
+                return;
+            }
+            document.getElementById('registration-error').style.display = 'none';
+            document.getElementById('registration-success').textContent = 'Registration successful!';
+            document.getElementById('registration-success').style.display = 'block';
+            
+            this.reset();
+        });
+
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const username = document.getElementById('login-username').value;
+            const password = document.getElementById('login-password').value;
+            if (!username || !password) {
+                document.getElementById('login-error').textContent = "Please fill in all fields";
+                document.getElementById('login-error').style.display = 'block';
+                return;
+            }
+            document.getElementById('login-error').style.display = 'none';
+            alert('Login successful! Redirecting...');
+        });
+    </script>
+</body>
+</html>
