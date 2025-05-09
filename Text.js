@@ -1,9 +1,6 @@
-// change-txt.js
 document.addEventListener('DOMContentLoaded', function() {
     const promoText = document.querySelector('.promo-text');
     if (!promoText) return;
-
-    // Додаємо CSS для анімацій
     const style = document.createElement('style');
     style.textContent = `
         .promo-text {
@@ -19,7 +16,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     `;
     document.head.appendChild(style);
-
     const textVariants = [
         "Get favorable exchange rates in seconds!",
         "Fast and secure currency conversions!",
@@ -27,38 +23,24 @@ document.addEventListener('DOMContentLoaded', function() {
         "No hidden fees - honest exchange!",
         "Trusted by thousands of users!"
     ];
-
     let currentIndex = 0;
-
     function changeText() {
-        // Початок анімації зникнення
         promoText.classList.add('fade-out');
-        
-        // Після завершення анімації зникнення
         setTimeout(() => {
-            // Зміна тексту
             currentIndex = (currentIndex + 1) % textVariants.length;
             promoText.textContent = textVariants[currentIndex];
-            
-            // Початок анімації появи
             promoText.classList.remove('fade-out');
             promoText.classList.add('fade-in');
-            
-            // Після завершення анімації появи
             setTimeout(() => {
                 promoText.classList.remove('fade-in');
             }, 500);
-        }, 500); // Час має збігатися з тривалістю CSS-анімації
+        }, 500); 
     }
-
-    // Початкова анімація (опціонально)
     setTimeout(() => {
         promoText.classList.add('fade-in');
         setTimeout(() => {
             promoText.classList.remove('fade-in');
         }, 500);
     }, 100);
-
-    // Змінюємо текст кожні 5 секунд
     setInterval(changeText, 5000);
 });

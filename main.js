@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const API_KEY = '5a8c1fa05a7c6c9d62b76192';
     const API_BASE_URL = 'https://v6.exchangerate-api.com/v6/' + API_KEY;
     const CACHE_DURATION = 30 * 60 * 1000;
-
     const amountInput = document.getElementById('amount');
     const fromCurrencySelect = document.getElementById('from-currency');
     const toCurrencySelect = document.getElementById('to-currency');
@@ -15,18 +14,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const chartCanvas = document.getElementById('currency-chart');
     const historyList = document.getElementById('history-list');
     const currencyCards = document.querySelectorAll('.currency-card');
-
-    // State
     let exchangeRates = {};
     let currencies = [];
     let conversionHistory = JSON.parse(localStorage.getItem('conversionHistory')) || [];
     let currencyChart = null;
 
-    // Loading indicator
     const loadingIndicator = document.createElement('div');
     loadingIndicator.className = 'loading';
     loadingIndicator.textContent = 'Loading...';
-
     async function init() {
         try {
             document.body.appendChild(loadingIndicator);
@@ -36,14 +31,12 @@ document.addEventListener('DOMContentLoaded', function() {
             setupPopularCurrencies();
             await initChart();
             
-            // Event listeners
             convertBtn.addEventListener('click', convertCurrency);
             swapBtn.addEventListener('click', swapCurrencies);
             baseCurrencySelect.addEventListener('change', updateChart);
             targetCurrencySelect.addEventListener('change', updateChart);
             timePeriodSelect.addEventListener('change', updateChart);
             
-            // Popular currencies click handlers
             currencyCards.forEach(card => {
                 card.addEventListener('click', () => {
                     const fromCurrency = card.dataset.from;
@@ -53,7 +46,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     toCurrencySelect.value = toCurrency;
                     updateFlags();
                     
-                    // Focus on amount input
                     amountInput.focus();
                 });
             });
@@ -104,7 +96,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
 
-        // Set default currencies
         const defaultPairs = { from: 'USD', to: 'UAH' };
         if (currencies.includes(defaultPairs.from)) fromCurrencySelect.value = defaultPairs.from;
         if (currencies.includes(defaultPairs.to)) toCurrencySelect.value = defaultPairs.to;
@@ -113,7 +104,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
         updateFlags();
     }
-
     function updateFlags() {
         const flagMap = {
             'from-currency': 'from-flag',
@@ -121,7 +111,6 @@ document.addEventListener('DOMContentLoaded', function() {
             'base-currency': 'base-flag',
             'target-currency': 'target-flag'
         };
-
         Object.entries(flagMap).forEach(([selectId, flagId]) => {
             const select = document.getElementById(selectId);
             const flag = document.getElementById(flagId);
@@ -130,7 +119,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-
     function getFlagUrl(currencyCode) {
         const specialCases = {
             EUR: 'eu',
@@ -157,8 +145,6 @@ document.addEventListener('DOMContentLoaded', function() {
             
             if (exchangeRates[fromCurrency] && exchangeRates[toCurrency]) {
                 const rate = (exchangeRates[toCurrency] / exchangeRates[fromCurrency]).toFixed(6);
-                
-                // Special case for JPY (typically shown as 100 JPY)
                 if (fromCurrency === 'JPY') {
                     card.querySelector('.currency-rate').textContent = `100 ${fromCurrency} = ${(rate * 100).toFixed(4)} ${toCurrency}`;
                 } else {
@@ -167,7 +153,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-
     async function convertCurrency() {
         const amount = parseFloat(amountInput.value);
         if (isNaN(amount)) {
@@ -208,7 +193,6 @@ document.addEventListener('DOMContentLoaded', function() {
             loadingIndicator.remove();
         }
     }
-
     function addToHistory(amount, fromCurrency, convertedAmount, toCurrency) {
         const conversion = {
             id: Date.now(),
@@ -225,7 +209,6 @@ document.addEventListener('DOMContentLoaded', function() {
         localStorage.setItem('conversionHistory', JSON.stringify(conversionHistory));
         loadConversionHistory();
     }
-
     function loadConversionHistory() {
         historyList.innerHTML = conversionHistory.length ? 
             conversionHistory.map(item => `
@@ -239,11 +222,9 @@ document.addEventListener('DOMContentLoaded', function() {
             `).join('') : 
             '<p class="empty-history">No conversion history</p>';
     }
-
     async function initChart() {
         await updateChart();
     }
-
     async function updateChart() {
         const base = baseCurrencySelect.value;
         const target = targetCurrencySelect.value;
